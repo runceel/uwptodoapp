@@ -33,5 +33,6 @@ namespace TodoApp.Views
         private async void Page_Loaded(object sender, RoutedEventArgs e) => await this.ViewModel.LoadAsync();
 
         private async void ButtonAdd_Click(object sender, RoutedEventArgs e) => await this.ViewModel.AddAsync();
+
     }
 }

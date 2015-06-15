@@ -8,6 +8,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -82,6 +83,17 @@ namespace TodoApp
                 {
                     //TODO: Load state from previously suspended application
                 }
+
+                // 戻るへの対応
+                SystemNavigationManager.GetForCurrentView().BackRequested += (_, args) =>
+                {
+                    if (shell.RootFrame.CanGoBack)
+                    {
+                        args.Handled = true;
+                        shell.RootFrame.GoBack();
+                    }
+                };
+
 
                 // Place the frame in the current Window
                 Window.Current.Content = shell;

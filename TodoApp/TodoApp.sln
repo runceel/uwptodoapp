@@ -1,9 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Blend for Visual Studio 14
+# Visual Studio 14
 VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApp", "TodoApp\TodoApp.csproj", "{3498CD3F-CBBE-4719-A06E-E8613394F323}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{79E686BA-3B08-4E81-9D47-B8F5399C48B7}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{28DC8152-CC6F-4349-8ED2-878F0DA26E70}"
+	ProjectSection(SolutionItems) = preProject
+		Images\addtododesktop.PNG = Images\addtododesktop.PNG
+		Images\donetaskdesktop.PNG = Images\donetaskdesktop.PNG
+		Images\imagemobile.PNG = Images\imagemobile.PNG
+		Images\menuopendesktop.PNG = Images\menuopendesktop.PNG
+		Images\startdesktop.png = Images\startdesktop.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -19,6 +19,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <TextBlock x:Name="TextBlockPageTitle"
                    Text="現在進行中のToDo"
@@ -35,44 +37,37 @@
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="Models:TodoItem">
-                    <RelativePanel>
-                        <TextBlock x:Name="TextBlockDescription"
-                                   Style="{ThemeResource BodyTextBlockStyle}" 
-                                   Text="{x:Bind Description, Mode=OneWay}"/>
-                        
+                    <Grid>
                         <CheckBox x:Name="CheckBoxDone" 
-                                  HorizontalAlignment="Right"
-                                  RelativePanel.AlignRightWithPanel="True"
-                                  IsChecked="{x:Bind Done, Mode=TwoWay, Converter={StaticResource NoopConverter}}"/>
-                    </RelativePanel>
+                                  IsChecked="{x:Bind Done, Mode=TwoWay, Converter={StaticResource NoopConverter}}"
+                                  Content="{x:Bind Description, Mode=OneWay}"
+                                  Grid.Column="1" />
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
-    </Grid>
-    <Page.BottomAppBar>
-        <CommandBar HorizontalContentAlignment="Stretch"
-                    VerticalContentAlignment="Center">
-            <CommandBar.Content>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock x:Name="TextBlockAddItem"
+    
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="TextBlockAddItem"
                                Text="ToDo: "
                                Style="{ThemeResource CaptionTextBlockStyle}"
                                VerticalAlignment="Center"/>
 
-                    <TextBox x:Name="TextBoxAddItem" 
+            <TextBox x:Name="TextBoxAddItem" 
                              Text="{x:Bind ViewModel.AddItemDescription, Mode=TwoWay, TargetNullValue=''}"
+                             HorizontalAlignment="Stretch"
                              Grid.Column="1"/>
-                </Grid>
-            </CommandBar.Content>
+        </Grid>
+
+        <CommandBar Grid.Row="3">
             <AppBarButton Label="追加" 
                           Icon="Add"
                           IsEnabled="{x:Bind ViewModel.CanAdd, Mode=OneWay}"
                           Click="ButtonAdd_Click"/>
         </CommandBar>
-    </Page.BottomAppBar>
+    </Grid>
 </Page>
