@@ -1,31 +1,31 @@
-# Windows 10 �T���v�� ToDo�A�v���P�[�V����
+# Windows 10 サンプル ToDoアプリケーション
 
-���̃A�v���P�[�V�����́AWindows 10��Universal Windows Platform app�̃T���v���A�v���P�[�V�����ł��B
+このアプリケーションは、Windows 10のUniversal Windows Platform appのサンプルアプリケーションです。
 
-## ����
+## 動作
 
-�N������ƈȉ��̂悤�ȉ�ʂ��\������܂��B
+起動すると以下のような画面が表示されます。
 
-![�N�����](Images/startdesktop.png)
+![起動画面](Images/startdesktop.png)
 
-��ʉ����̃e�L�X�g�{�b�N�X�Ƀe�L�X�g����͂��ā{�{�^����I�������ToDo���o�^����܂��B
+画面下部のテキストボックスにテキストを入力して＋ボタンを選択するとToDoが登録されます。
 
-![ToDo�ǉ�](Images/addtododesktop.png)
+![ToDo追加](Images/addtododesktop.PNG)
 
-�`�F�b�N�{�b�N�X�Ƀ`�F�b�N������ƁAToDo�������܂��B������ToDo�͉�ʂ̍����́[���N���b�N���ĕ\��������ʂŊm�F�ł��܂��B
+チェックボックスにチェックを入れると、ToDoが消えます。消えたToDoは画面の左側のーをクリックして表示される画面で確認できます。
 
-![��������ToDo](Images/donetaskdesktop.png)
+![完了したToDo](Images/donetaskdesktop.PNG)
 
-�A�v���o�[����A��������ToDo�����Ƃɖ߂�����A���S�ɍ폜���邱�Ƃ��ł��܂��B
-
-
-��ʂ̃n���o�[�K�[�{�^���������ƁA��ʑJ�ڂ̂��߂̃��j���[��\�����邱�Ƃ��ł��܂��B
-
-![Menu](Images/menuopendesktop.png)
-
-�n���o�[�K�[���j���[�̉��̖߂�{�^���������Ɖ�ʑJ�ڂ�1�߂邱�Ƃ��ł��܂��B
+アプリバーから、完了したToDoをもとに戻したり、完全に削除することができます。
 
 
-Windows Phone�ł����l�̑���Ŏg�p���邱�Ƃ��ł��܂��B
+画面のハンバーガーボタンを押すと、画面遷移のためのメニューを表示することができます。
 
-![Menu](Images/imagemobile.png)
+![Menu](Images/menuopendesktop.PNG)
+
+ハンバーガーメニューの横の戻るボタンを押すと画面遷移を1つ戻ることができます。
+
+
+Windows Phoneでも同様の操作で使用することができます。
+
+![Menu](Images/imagemobile.PNG)
