@@ -1,0 +1,11 @@
+﻿<Application
+    x:Class="TodoAppRxProp.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TodoAppRxProp"
+    xmlns:Converters="using:TodoAppRxProp.Converters"
+    RequestedTheme="Light">
+    <Application.Resources>
+        <Converters:NoopConverter x:Key="NoopConverter" />
+    </Application.Resources>
+</Application>

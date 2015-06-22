@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="TodoAppRxProp.Views.DoneItemPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TodoAppRxProp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ViewModels="using:TodoAppRxProp.ViewModels"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="TextBlockPageTitle"
+                   Text="完了したToDo"
+                   Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+        <ListView x:Name="ListViewDoneItems"
+                  ItemsSource="{x:Bind ViewModel.DoneItems}"
+                  SelectedItem="{x:Bind ViewModel.SelectedTodoItem.Value, Mode=TwoWay, Converter={StaticResource NoopConverter}}"
+                  Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="ViewModels:TodoItemViewModel">
+                    <TextBlock Text="{x:Bind Description.Value}"
+                               Style="{ThemeResource BodyTextBlockStyle}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Remove" 
+                          Label="削除" 
+                          Command="{x:Bind ViewModel.RemoveCommand}"/>
+            <AppBarButton Icon="Redo"
+                          Label="戻す" 
+                          Command="{x:Bind ViewModel.RestoreCommand}"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

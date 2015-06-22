@@ -1,0 +1,72 @@
+﻿<Page
+    x:Class="TodoAppRxProp.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TodoAppRxProp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ViewModels="using:TodoAppRxProp.ViewModels"
+    mc:Ignorable="d"
+    Loaded="Page_Loaded" Unloaded="Page_Unloaded">
+    <Page.Resources>
+        <CollectionViewSource
+            x:Key="TodoItemsSource"
+            Source="{x:Bind ViewModel.TodoItems}">
+        </CollectionViewSource>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="TextBlockPageTitle"
+                   Text="現在進行中のToDo"
+                   Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+        <ListView x:Name="ListViewTodoItems"
+                  ItemsSource="{Binding Source={StaticResource TodoItemsSource}}"
+                  SelectionMode="None"
+                  Grid.Row="1">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="ViewModels:TodoItemViewModel">
+                    <Grid>
+                        <CheckBox x:Name="CheckBoxDone" 
+                                  IsChecked="{x:Bind Done.Value, Mode=TwoWay, Converter={StaticResource NoopConverter}}"
+                                  Content="{x:Bind Description.Value, Mode=OneWay}"
+                                  Grid.Column="1" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="TextBlockAddItem"
+                               Text="ToDo: "
+                               Style="{ThemeResource CaptionTextBlockStyle}"
+                               VerticalAlignment="Center"/>
+
+            <TextBox x:Name="TextBoxAddItem" 
+                             Text="{x:Bind ViewModel.Description.Value, Mode=TwoWay, TargetNullValue=''}"
+                             HorizontalAlignment="Stretch"
+                             Grid.Column="1"/>
+        </Grid>
+
+        <CommandBar Grid.Row="3">
+            <AppBarButton Label="追加" 
+                          Icon="Add"
+                          Command="{x:Bind ViewModel.AddTodoItemCommand}"/>
+        </CommandBar>
+    </Grid>
+</Page>
